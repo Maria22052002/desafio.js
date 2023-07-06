@@ -1,0 +1,95 @@
+// Manipulando strings
+
+// 1º Desafio
+function ReverterOrderString(input) {
+    return input.split(' ').reverse().join(' ')
+}
+
+const input = "Hello, World! OpenAI is amazing"
+const stringRevertida = ReverterOrderString(input)
+console.log(stringRevertida)
+
+// 2º desafio
+function removeDuplicados(input) {
+    const charArray = input.split('')
+
+    const caracteresUnicos = charArray.filter(function(char, index) {
+        return charArray.indexOf(char) === index
+    });
+
+    const resultado = caracteresUnicos.join('')
+
+    return resultado;
+}
+
+const input2 = "Hello World!"
+var resultado2 = removeDuplicados(input2)
+console.log(resultado2)
+
+
+// 3º desafio
+function encontrarStringPalindroma(str) {
+    var palindromaMaisLonga = ''
+
+    function ePalindroma(substring) {
+        var reversed = substring.split('').reverse().join('')
+        return substring === reversed
+    }
+
+    for (var i = 0; i < str.length; i++) {
+        for (var j = i + 1; j <= str.length; j++) {
+        var substring = str.slice(i, j)
+        if (ePalindroma(substring) && substring.length > palindromaMaisLonga.length) {
+            palindromaMaisLonga = substring
+        }
+        }
+    }
+
+    return palindromaMaisLonga
+}
+
+var stringOriginal = 'babad'
+var palindromaMaisLongo = encontrarStringPalindroma(stringOriginal)
+console.log(palindromaMaisLongo)
+
+
+// 4º Desafio
+function primeiraLetraMaiscula(str) {
+    const frases = str.split(/([.!?]\s+)/)
+  
+    for (var i = 0; i < frases.length; i++) {
+      const frase = frases[i];
+      frases[i] = frase.charAt(0).toUpperCase() + frase.slice(1)
+    }
+  
+    const result = frases.join('')
+  
+    return result
+}
+  
+const stringOriginal2 = 'hello. how are you? i am fine.'
+const stringLetrasMaiusculas = primeiraLetraMaiscula(stringOriginal2)
+console.log(stringLetrasMaiusculas)
+
+function anagramaDePalindroma(input) {
+    const charCount = {}
+
+    for (var i = 0; i < input.length; i++) {
+      const char = input[i]
+      charCount[char] = (charCount[char] || 0) + 1
+    }
+  
+    let contagem = 0
+  
+    for (var key in charCount) {
+      if (charCount[key] % 2 !== 0) {
+        contagem++
+      }
+    }
+
+    return contagem <= 1
+}
+  
+const inputStringAnagrama = 'racecar'
+const anagramPalindroma = anagramaDePalindroma(inputStringAnagrama)
+console.log(anagramPalindroma)
